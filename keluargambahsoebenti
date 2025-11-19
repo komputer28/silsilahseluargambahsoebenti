@@ -1,0 +1,1624 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silsilah Keluarga Soebenti dan Wariso</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f0e5 0%, #e8dfd0 100%);
+            color: #5d4037;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(to right, #8d6e63, #6d4c41);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="40" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="30" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="30" cy="70" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="70" cy="80" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+        }
+
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .marquee-container {
+            background: #6d4c41;
+            color: white;
+            padding: 0.5rem 0;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .marquee-text {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 20s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            background: #efebe9;
+            padding: 1rem;
+            border-bottom: 1px solid #d7ccc8;
+        }
+
+        .tab-btn {
+            background: #d7ccc8;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            margin: 0 0.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            color: #5d4037;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tab-btn.active,
+        .tab-btn:hover {
+            background: linear-gradient(to right, #8bc34a, #4caf50);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .generation {
+            margin-bottom: 3rem;
+        }
+
+        .generation-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #5d4037;
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .generation-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, #8bc34a, #4caf50);
+            border-radius: 2px;
+        }
+
+        .family-tree {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .person-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            width: 300px;
+            box-shadow: 0 8px 20px rgba(141, 110, 99, 0.15);
+            transition: all 0.3s ease;
+            border: 1px solid #d7ccc8;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .person-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(141, 110, 99, 0.25);
+        }
+
+        .person-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #8bc34a, #4caf50);
+        }
+
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1rem;
+            border: 3px solid #d7ccc8;
+            display: block;
+            background: linear-gradient(45deg, #8d6e63, #a1887f);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 2rem;
+        }
+
+        .person-name {
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: #4e342e;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .person-detail {
+            font-size: 0.9rem;
+            color: #795548;
+            text-align: center;
+            margin-bottom: 0.3rem;
+        }
+
+        .person-info {
+            background: #f5f0e5;
+            padding: 0.8rem;
+            border-radius: 8px;
+            margin: 0.8rem 0;
+            font-size: 0.85rem;
+        }
+
+        .info-item {
+            display: flex;
+            margin-bottom: 0.3rem;
+        }
+
+        .info-label {
+            font-weight: 500;
+            min-width: 80px;
+            color: #5d4037;
+        }
+
+        .info-value {
+            color: #795548;
+        }
+
+        .map-link {
+            color: #4caf50;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-block;
+            margin-top: 0.3rem;
+        }
+
+        .map-link:hover {
+            text-decoration: underline;
+        }
+
+        .children-container {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px dashed #d7ccc8;
+        }
+
+        .children-title {
+            font-weight: 500;
+            color: #5d4037;
+            font-size: 0.9rem;
+            text-align: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .children-grid {
+            display: grid;
+            gap: 0.8rem;
+        }
+
+        .child-item {
+            background: #f5f0e5;
+            padding: 0.5rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            text-align: center;
+            border-left: 3px solid #8bc34a;
+        }
+
+        .album-section {
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .album-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #5d4037;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .album-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, #8bc34a, #4caf50);
+            border-radius: 2px;
+        }
+
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .photo-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(141, 110, 99, 0.15);
+            transition: all 0.3s ease;
+            aspect-ratio: 1/1;
+        }
+
+        .photo-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(141, 110, 99, 0.25);
+        }
+
+        .photo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .album-placeholder {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(141, 110, 99, 0.15);
+            margin: 2rem auto;
+            max-width: 600px;
+        }
+
+        .album-placeholder i {
+            font-size: 4rem;
+            color: #8d6e63;
+            margin-bottom: 1rem;
+        }
+
+        .album-placeholder h3 {
+            color: #5d4037;
+            margin-bottom: 1rem;
+        }
+
+        .album-placeholder p {
+            color: #795548;
+            line-height: 1.6;
+        }
+
+        .comments-section {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 3rem 0;
+            box-shadow: 0 8px 20px rgba(141, 110, 99, 0.15);
+        }
+
+        .comments-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #5d4037;
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .comments-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, #8bc34a, #4caf50);
+            border-radius: 2px;
+        }
+
+        .comment-form {
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #5d4037;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #d7ccc8;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(to right, #8bc34a, #4caf50);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .comments-list {
+            margin-top: 2rem;
+        }
+
+        .comment-item {
+            background: #f5f0e5;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .comment-name {
+            font-weight: 600;
+            color: #4e342e;
+        }
+
+        .comment-date {
+            color: #795548;
+            font-size: 0.85rem;
+        }
+
+        .comment-message {
+            color: #5d4037;
+            line-height: 1.5;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: #795548;
+            font-size: 0.9rem;
+            background: #efebe9;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .family-tree {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .person-card {
+                width: 90%;
+                max-width: 300px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .nav-tabs {
+                flex-wrap: wrap;
+            }
+
+            .tab-btn {
+                margin: 0.25rem;
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .photo-gallery {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1><i class="fas fa-tree"></i> Silsilah Keluarga Soebenti dan Wariso</h1>
+        <p>Keluarga yang penuh berkah, kebahagiaan, dan persatuan</p>
+    </div>
+
+    <div class="marquee-container">
+        <div class="marquee-text">
+            <i class="fas fa-heart"></i> SELAMAT DATANG DI WEBSITE SILSILAH KELUARGA SOEBENTI DAN WARISO <i class="fas fa-heart"></i> 
+            TERIMA KASIH ATAS KUNJUNGAN ANDA <i class="fas fa-star"></i> 
+            KELUARGA BESAR SOEBENTI DAN WARISO MENYAMBUT ANDA DENGAN TANGAN TERBUKA <i class="fas fa-heart"></i>
+        </div>
+    </div>
+
+    <div class="nav-tabs">
+        <button class="tab-btn active" onclick="showTab('silsilah')">
+            <i class="fas fa-sitemap"></i> Silsilah
+        </button>
+        <button class="tab-btn" onclick="showTab('album')">
+            <i class="fas fa-images"></i> Album Foto
+        </button>
+        <button class="tab-btn" onclick="showTab('comments')">
+            <i class="fas fa-comments"></i> Komentar
+        </button>
+    </div>
+
+    <div class="container">
+        <!-- Tab Silsilah -->
+        <div id="silsilah" class="tab-content active">
+            <!-- Generasi Pertama -->
+            <div class="generation">
+                <h2 class="generation-title">Generasi Pertama</h2>
+                <div class="family-tree">
+                    <div class="person-card">
+                        <div class="profile-img">S</div>
+                        <div class="person-name">Almh. Soebenti</div>
+                        <div class="person-detail">Istri dari Alm Wariso</div>
+                        <div class="person-info">
+                            <div class="info-item">
+                                <span class="info-label">Lahir:</span>
+                                <span class="info-value">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Alamat:</span>
+                                <span class="info-value">Dsn. jalak Ds.banjardowo Kec. kabuh JOMBANG
+                                    RT1 RW 1</span>
+                                <a href="https://maps.google.com/?q=Dsn. jalak Ds.banjardowo Kec. kabuh JOMBANG" target="_blank" class="map-link">
+                                    <i class="fas fa-map-marker-alt"></i> Lihat di Maps
+                                </a>
+                            </div>
+                        </div>
+                        <div class="children-container">
+                            <div class="children-title">Memiliki 3 Anak:</div>
+                            <div class="children-grid">
+                                <div class="child-item">Prawiti</div>
+                                <div class="child-item">Pramujiati</div>
+                                <div class="child-item">Rustati Udji</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="person-card">
+                        <div class="profile-img">W</div>
+                        <div class="person-name">Alm. Wariso</div>
+                        <div class="person-detail">Suami dari Almh. Soebenti</div>
+                        <div class="person-info">
+                            <div class="info-item">
+                                <span class="info-label">Lahir:</span>
+                                <span class="info-value">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Alamat:</span>
+                                <span class="info-value">Dsn. jalak Ds.banjardowo Kec. kabuh JOMBANG
+                                    RT1 RW 1</span>
+                                <a href="https://maps.google.com/?q=Dsn. jalak Ds.banjardowo Kec. kabuh JOMBANG" target="_blank" class="map-link">
+                                    <i class="fas fa-map-marker-alt"></i> Lihat di Maps
+                                </a>
+                            </div>
+                        </div>
+                        <div class="children-container">
+                            <div class="children-title">Ayah dari 3 Anak:</div>
+                            <div class="children-grid">
+                                <div class="child-item">Prawiti</div>
+                                <div class="child-item">Pramujiati</div>
+                                <div class="child-item">Rustati Udji</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Anak Dari Soebenti Dan Wariso -->
+            <div class="generation">
+                <h2 class="generation-title">Anak Dari Almh.Soebenti Dan Alm.Wariso</h2>
+                <div class="family-tree">
+                    <!-- Prawiti -->
+                    <div class="person-card">
+                        <div class="profile-img">P</div>
+                        <div class="person-name">Prawiti</div>
+                        <div class="person-detail">Istri dari Sail</div>
+                        <div class="person-info">
+                            <div class="info-item">
+                                <span class="info-label">Lahir:</span>
+                                <span class="info-value">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Alamat:</span>
+                                <span class="info-value">Dsn. jalak Ds.banjardowo Kec. kabuh JOMBANG
+                                    RT1 RW 1</span>
+                                <a href="https://maps.google.com/?q=Dsn. jalak Ds.banjardowo Kec. kabuh JOMBANG" target="_blank" class="map-link">
+                                    <i class="fas fa-map-marker-alt"></i> Lihat di Maps
+                                </a>
+                            </div>
+                        </div>
+                        <div class="children-container">
+                            <div class="children-title">Anak:</div>
+                            <div class="children-grid">
+                                <div class="child-item">Karmilah</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pramujiati -->
+                    <div class="person-card">
+                        <div class="profile-img">P</div>
+                        <div class="person-name">Pramujiati</div>
+                        <div class="person-detail">Istri dari Sudaryo</div>
+                        <div class="person-info">
+                            <div class="info-item">
+                                <span class="info-label">Lahir:</span>
+                                <span class="info-value">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Alamat:</span>
+                                <span class="info-value">Asrama Brimob
+                                    Jl.GRESIK 39 SURABAYA</span>
+                                <a href="https://maps.google.com/?q=Asrama Brimob Jl.GRESIK 39 SURABAYA" target="_blank" class="map-link">
+                                    <i class="fas fa-map-marker-alt"></i> Lihat di Maps
+                                </a>
+                            </div>
+                        </div>
+                        <div class="children-container">
+                            <div class="children-title">Memiliki 3 Anak:</div>
+                            <div class="children-grid">
+                                <div class="child-item">Beni Prasetyo</div>
+                                <div class="child-item">Yuli Siswati</div>
+                                <div class="child-item">Dani Prambudisetyo</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rustati Udji -->
+                    <div class="person-card">
+                        <div class="profile-img">R</div>
+                        <div class="person-name">Rustati Udji</div>
+                        <div class="person-detail">Istri dari Soepanto</div>
+                        <div class="person-info">
+                            <div class="info-item">
+                                <span class="info-label">Lahir:</span>
+                                <span class="info-value">21 JUNI 1954</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Alamat:</span>
+                                <span class="info-value">GRESIK 39 ASRAMA BRIMOB RT 003, RW 002 SURABAYA </span>
+                                <a href="https://maps.google.com/?q=GRESIK 39 ASRAMA BRIMOB RT 003, RW 002 SURABAYA" target="_blank" class="map-link">
+                                    <i class="fas fa-map-marker-alt"></i> Lihat di Maps
+                                </a>
+                            </div>
+                        </div>
+                        <div class="children-container">
+                            <div class="children-title">Memiliki 3 Anak:</div>
+                            <div class="children-grid">
+                                <div class="child-item">Agi Seno</div>
+                                <div class="child-item">Dwi Indah Pangestuti S.E</div>
+                                <div class="child-item">Trio Siswantoro</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- - Keluarga Prawiti -->
+            <div class="generation">
+                <h2 class="generation-title"> - Keluarga Prawiti Dan Sail</h2>
+                <div class="family-tree">
+                    <div class="person-card">
+                        <div class="profile-img">S</div>
+                        <div class="person-name">Sail</div>
+                        <div class="person-detail">Suami dari Prawiti</div>
+                        <div class="person-info">
+                            <div class="info-item">
+                                <span class="info-label">Lahir:</span>
+                                <span class="info-value">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Alamat:</span>
+                                <span class="info-value">Dsn. jalak Ds.banjardowo Kec. kabuh JOMBANG
+                                    RT1 RW 1</span>
+                                <a href="https://maps.google.com/?q=Dsn. jalak Ds.banjardowo Kec. kabuh JOMBANG" target="_blank" class="map-link">
+                                    <i class="fas fa-map-marker-alt"></i> Lihat di Maps
+                                </a>
+                            </div>
+                        </div>
+                        <div class="children-container">
+                            <div class="children-title">Ayah dari:</div>
+                            <div class="children-grid">
+                                <div class="child-item">Karmilah</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="person-card">
+                        <div class="profile-img">K</div>
+                        <div class="person-name">Karmilah</div>
+                        <div class="person-detail">Istri dari Slamet</div>
+                        <div class="person-info">
+                            <div class="info-item">
+                                <span class="info-label">Lahir:</span>
+                                <span class="info-value">02 April 1971</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Alamat:</span>
+                                <span class="info-value">Dsn. jalak Ds.banjardowo Kec. kabuh JOMBANG
+                                    RT1 RW 1</span>
+                                <a href="https://maps.google.com/?q=Dsn. jalak Ds.banjardowo Kec. kabuh JOMBANG" target="_blank" class="map-link">
+                                    <i class="fas fa-map-marker-alt"></i> Lihat di Maps
+                                </a>
+                            </div>
+                        </div>
+                        <div class="children-container">
+                            <div class="children-title">Anak:</div>
+                            <div class="children-grid">
+                                <div class="child-item">Noval Muhammad Rizqi</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="person-card">
+                        <div class="profile-img">S</div>
+                        <div class="person-name">Slamet</div>
+                        <div class="person-detail">Suami dari Karmilah</div>
+                        <div class="person-info">
+                            <div class="info-item">
+                                <span class="info-label">Lahir:</span>
+                                <span class="info-value">01 Februari 1977</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Alamat:</span>
+                                <span class="info-value">Dsn. jalak Ds.banjardowo Kec. kabuh JOMBANG
+                                    RT1 RW 1</span>
+                                <a href="https://maps.google.com/?q=Dsn. jalak Ds.banjardowo Kec. kabuh JOMBANG" target="_blank" class="map-link">
+                                    <i class="fas fa-map-marker-alt"></i> Lihat di Maps
+                                </a>
+                            </div>
+                        </div>
+                        <div class="children-container">
+                            <div class="children-title">Ayah dari:</div>
+                            <div class="children-grid">
+                                <div class="child-item">Noval Muhammad Rizqi</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="person-card">
+                        <div class="profile-img">N</div>
+                        <div class="person-name">Noval Muhammad Rizqi</div>
+                        <div class="person-detail">Cucu dari Prawiti & Sail</div>
+                        <div class="person-info">
+                            <div class="info-item">
+                                <span class="info-label">Lahir:</span>
+                                <span class="info-value">20 November 2007</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Alamat:</span>
+                                <span class="info-value">Dsn. jalak Ds.banjardowo Kec. kabuh JOMBANG
+                                    RT1 RW 1</span>
+                                <a href="https://maps.google.com/?q=Dsn. jalak Ds.banjardowo Kec. kabuh JOMBANG" target="_blank" class="map-link">
+                                    <i class="fas fa-map-marker-alt"></i> Lihat di Maps
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--  - Keluarga Dari  Pramujiati Dan Sudaryo -->
+            <div class="generation">
+                <h2 class="generation-title"> - Keluarga Dari Pramujiati Dan Alm.Sudaryo</h2>
+                <div class="family-tree">
+                    <div class="person-card">
+                        <div class="profile-img">S</div>
+                        <div class="person-name">Alm.Sudaryo</div>
+                        <div class="person-detail">Suami dari Pramujiati</div>
+                        <div class="person-info">
+                            <div class="info-item">
+                                <span class="info-label">Lahir:</span>
+                                <span class="info-value">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Alamat:</span>
+                                <span class="info-value">Asrama Brimob Jl.GRESIK 39 SURABAYA</span>
+                                <a href="https://maps.google.com/?q=Asrama Brimob Jl.GRESIK 39 SURABAYA" target="_blank" class="map-link">
+                                    <i class="fas fa-map-marker-alt"></i> Lihat di Maps
+                                </a>
+                            </div>
+                        </div>
+                        <div class="children-container">
+                            <div class="children-title">Ayah dari 3 Anak:</div>
+                            <div class="children-grid">
+                                <div class="child-item">Beni Prasetyo</div>
+                                <div class="child-item">Yuli Siswati</div>
+                                <div class="child-item">Dani Prambudisetyo</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- - Keluarga Beni Prasetyo Dan Mariyah Ulpah-->
+            <div class="generation">
+                <h2 class="generation-title"> - Keluarga Beni Prasetyo Dan Mariyah Ulpah</h2>
+                <div class="family-tree">
+                    <div class="person-card">
+                        <div class="profile-img">B</div>
+                        <div class="person-name">Beni Prasetyo</div>
+                        <div class="person-detail">Suami dari Mariyah Ulpah</div>
+                        <div class="person-info">
+                            <div class="info-item">
+                                <span class="info-label">Lahir:</span>
+                                <span class="info-value">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Alamat:</span>
+                                <span class="info-value">-</span>
+                            </div>
+                        </div>
+                        <div class="children-container">
+                            <div class="children-title">Memiliki 4 Anak:</div>
+                            <div class="children-grid">
+                                <div class="child-item">Farrel Surya Prasetya</div>
+                                <div class="child-item">Naura Alvina Satyawati</div>
+                                <div class="child-item">Ravindra Aditya Pasga</div>
+                                <div class="child-item">Azka Delvin Bayanaka</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="person-card">
+                        <div class="profile-img">M</div>
+                        <div class="person-name">Mariyah Ulpah</div>
+                        <div class="person-detail">Istri dari Beni Prasetyo</div>
+                        <div class="person-info">
+                            <div class="info-item">
+                                <span class="info-label">Lahir:</span>
+                                <span class="info-value">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Alamat:</span>
+                                <span class="info-value">-</span>
+                            </div>
+                        </div>
+                        <div class="children-container">
+                            <div class="children-title">Ibu dari 4 Anak:</div>
+                            <div class="children-grid">
+                                <div class="child-item">Farrel Surya Prasetya</div>
+                                <div class="child-item">Naura Alvina Satyawati</div>
+                                <div class="child-item">Ravindra Aditya Pasga</div>
+                                <div class="child-item">Azka Delvin Bayanaka</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- - AnakKeluarga Dari  Beni Prasetyo Dan Mariyah Ulpah -->
+            <div class="generation">
+                <h2 class="generation-title"> - Anak Keluarga Dari Beni Prasetyo Dan Mariyah Ulpah </h2>
+                <div class="family-tree">
+                    <div class="person-card">
+                        <div class="profile-img">F</div>
+                        <div class="person-name">Farrel Surya Prasetya</div>
+                        <div class="person-detail">Putra dari Beni & Mariyah</div>
+                        <div class="person-info">
+                            <div class="info-item">
+                                <span class="info-label">Lahir:</span>
+                                <span class="info-value">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Alamat:</span>
+                                <span class="info-value">-</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="person-card">
+                        <div class="profile-img">N</div>
+                        <div class="person-name">Naura Alvina Satyawati</div>
+                        <div class="person-detail">Putri dari Beni & Mariyah</div>
+                        <div class="person-info">
+                            <div class="info-item">
+                                <span class="info-label">Lahir:</span>
+                                <span class="info-value">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Alamat:</span>
+                                <span class="info-value">-</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="person-card">
+                        <div class="profile-img">R</div>
+                        <div class="person-name">Ravindra Aditya Pasga</div>
+                        <div class="person-detail">Putra dari Beni & Mariyah</div>
+                        <div class="person-info">
+                            <div class="info-item">
+                                <span class="info-label">Lahir:</span>
+                                <span class="info-value">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Alamat:</span>
+                                <span class="info-value">-</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="person-card">
+                        <div class="profile-img">A</div>
+                        <div class="person-name">Azka Delvin Bayanaka</div>
+                        <div class="person-detail">Putra dari Beni & Mariyah</div>
+                        <div class="person-info">
+                            <div class="info-item">
+                                <span class="info-label">Lahir:</span>
+                                <span class="info-value">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Alamat:</span>
+                                <span class="info-value">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- - Keluarga Yuli Siswati Dan Saleh Rusjandy-->
+            <div class="generation">
+                <h2 class="generation-title">Keluarga Yuli Siswati Dan Saleh Rusjandy</h2>
+                <div class="family-tree">
+                    <div class="person-card">
+                        <div class="profile-img">Y</div>
+                        <div class="person-name">Yuli Siswati</div>
+                        <div class="person-detail">Istri dari Saleh Rusjandy</div>
+                        <div class="person-info">
+                            <div class="info-item">
+                                <span class="info-label">Lahir:</span>
+                                <span class="info-value">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Alamat:</span>
+                                <span class="info-value">-</span>
+                            </div>
+                        </div>
+                        <div class="children-container">
+                            <div class="children-title">Anak:</div>
+                            <div class="children-grid">
+                                <div class="child-item">Almahyra Zanitha Albirru</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="person-card">
+                        <div class="profile-img">S</div>
+                        <div class="person-name">Saleh Rusjandy</div>
+                        <div class="person-detail">Suami dari Yuli Siswati</div>
+                        <div class="person-info">
+                            <div class="info-item">
+                                <span class="info-label">Lahir:</span>
+                                <span class="info-value">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Alamat:</span>
+                                <span class="info-value">-</span>
+                            </div>
+                        </div>
+                        <div class="children-container">
+                            <div class="children-title">Ayah dari:</div>
+                            <div class="children-grid">
+                                <div class="child-item">Almahyra Zanitha Albirru</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="person-card">
+                        <div class="profile-img">A</div>
+                        <div class="person-name">Almahyra Zanitha Albirru</div>
+                        <div class="person-detail">Putri dari Yuli & Saleh</div>
+                        <div class="person-info">
+                            <div class="info-item">
+                                <span class="info-label">Lahir:</span>
+                                <span class="info-value">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Alamat:</span>
+                                <span class="info-value">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- - Keluarga Dani Prambudisetyo Dan Sistha Prawitya Sari -->
+            <div class="generation">
+                <h2 class="generation-title">Keluarga Dani Prambudisetyo Dan Sistha Prawitya Sari</h2>
+                <div class="family-tree">
+                    <div class="person-card">
+                        <div class="profile-img">D</div>
+                        <div class="person-name">Dani Prambudisetyo</div>
+                        <div class="person-detail">Suami dari Sistha Prawitya Sari</div>
+                        <div class="person-info">
+                            <div class="info-item">
+                                <span class="info-label">Lahir:</span>
+                                <span class="info-value">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Alamat:</span>
+                                <span class="info-value">-</span>
+                            </div>
+                        </div>
+                        <div class="children-container">
+                            <div class="children-title">Ayah dari 2 Anak:</div>
+                            <div class="children-grid">
+                                <div class="child-item">Amabelle Anindya Feicita</div>
+                                <div class="child-item">Gefanda Arsyilia Lyndie</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="person-card">
+                        <div class="profile-img">S</div>
+                        <div class="person-name">Sistha Prawitya Sari</div>
+                        <div class="person-detail">Istri dari Dani Prambudisetyo</div>
+                        <div class="person-info">
+                            <div class="info-item">
+                                <span class="info-label">Lahir:</span>
+                                <span class="info-value">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Alamat:</span>
+                                <span class="info-value">-</span>
+                            </div>
+                        </div>
+                        <div class="children-container">
+                            <div class="children-title">Ibu dari 2 Anak:</div>
+                            <div class="children-grid">
+                                <div class="child-item">Amabelle Anindya Feicita</div>
+                                <div class="child-item">Gefanda Arsyilia Lyndie</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- - Keluarga Dani Prambudisetyo Dan Sistha Prawitya Sari (Anak) -->
+            <div class="generation">
+                <h2 class="generation-title">Anak Keluarga Dani Prambudisetyo Dan Sistha Prawitya Sari</h2>
+                <div class="family-tree">
+                    <div class="person-card">
+                        <div class="profile-img">A</div>
+                        <div class="person-name">Amabelle Anindya Feicita</div>
+                        <div class="person-detail">Putri dari Dani & Sistha</div>
+                        <div class="person-info">
+                            <div class="info-item">
+                                <span class="info-label">Lahir:</span>
+                                <span class="info-value">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Alamat:</span>
+                                <span class="info-value">-</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="person-card">
+                        <div class="profile-img">G</div>
+                        <div class="person-name">Gefanda Arsyilia Lyndie</div>
+                        <div class="person-detail">Putri dari Dani & Sistha</div>
+                        <div class="person-info">
+                            <div class="info-item">
+                                <span class="info-label">Lahir:</span>
+                                <span class="info-value">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Alamat:</span>
+                                <span class="info-value">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- - Keluarga Dari Rustati Udji Dan Soepanto -->
+            <div class="generation">
+                <h2 class="generation-title">Keluarga Dari Rustati Udji Dan Soepanto</h2>
+                <div class="family-tree">
+                    <div class="person-card">
+                        <div class="profile-img">S</div>
+                        <div class="person-name">Soepanto</div>
+                        <div class="person-detail">Suami dari Rustati Udji</div>
+                        <div class="person-info">
+                            <div class="info-item">
+                                <span class="info-label">Lahir:</span>
+                                <span class="info-value">04 Mei 1949</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Alamat:</span>
+                                <span class="info-value">GRESIK 39 ASRAMA BRIMOB RT 003, RW 002 SURABAYA</span>
+                                <a href="https://maps.google.com/?q=GRESIK 39 ASRAMA BRIMOB RT 003, RW 002 SURABAYA" target="_blank" class="map-link">
+                                    <i class="fas fa-map-marker-alt"></i> Lihat di Maps
+                                </a>
+                            </div>
+                        </div>
+                        <div class="children-container">
+                            <div class="children-title">Ayah dari 3 Anak:</div>
+                            <div class="children-grid">
+                                <div class="child-item">Agi Seno</div>
+                                <div class="child-item">Dwi Indah Pangestuti S.E</div>
+                                <div class="child-item">Trio Siswantoro</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- - Keluarga Dari Agi Seno Dan Suci Prasetyowati S.S -->
+            <div class="generation">
+                <h2 class="generation-title">Keluarga Agi Seno Dan Suci Prasetyowati S.S</h2>
+                <div class="family-tree">
+                    <div class="person-card">
+                        <div class="profile-img">A</div>
+                        <div class="person-name">Agi Seno</div>
+                        <div class="person-detail">Suami dari Suci Prasetyowati S.S</div>
+                        <div class="person-info">
+                            <div class="info-item">
+                                <span class="info-label">Lahir:</span>
+                                <span class="info-value">05 Mei 1974</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Alamat:</span>
+                                <span class="info-value">JL. CITRA SERUNI 36 RT 100 RW 010, TROPODO, WARU, SIDOARJO JAWA
+                                    TIMUR</span>
+                                <a href="https://maps.google.com/?q=JL. CITRA SERUNI 36 RT 100 RW 010, TROPODO, WARU, SIDOARJO JAWA TIMUR" target="_blank" class="map-link">
+                                    <i class="fas fa-map-marker-alt"></i> Lihat di Maps
+                                </a>
+                            </div>
+                        </div>
+                        <div class="children-container">
+                            <div class="children-title">Memiliki 3 Anak:</div>
+                            <div class="children-grid">
+                                <div class="child-item">Hammam Satya Perwira</div>
+                                <div class="child-item">Atha Candra Ahmad Fawwaz</div>
+                                <div class="child-item">Almira Nadia Kirana</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="person-card">
+                        <div class="profile-img">S</div>
+                        <div class="person-name">Suci Prasetyowati S.S</div>
+                        <div class="person-detail">Istri dari Agi Seno</div>
+                        <div class="person-info">
+                            <div class="info-item">
+                                <span class="info-label">Lahir:</span>
+                                <span class="info-value">11 Mei 1977</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Alamat:</span>
+                                <span class="info-value">JL. CITRA SERUNI 36 RT 100 RW 010, TROPODO, WARU, SIDOARJO JAWA
+                                    TIMUR</span>
+                                <a href="https://maps.google.com/?q=JL. CITRA SERUNI 36 RT 100 RW 010, TROPODO, WARU, SIDOARJO JAWA TIMUR" target="_blank" class="map-link">
+                                    <i class="fas fa-map-marker-alt"></i> Lihat di Maps
+                                </a>
+                            </div>
+                        </div>
+                        <div class="children-container">
+                            <div class="children-title">Ibu dari 3 Anak:</div>
+                            <div class="children-grid">
+                                <div class="child-item">Hammam Satya Perwira</div>
+                                <div class="child-item">Atha Candra Ahmad Fawwaz</div>
+                                <div class="child-item">Almira Nadia Kirana</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Anak Keluarga Dari Agi Seno Dan Suci Prasetyowati S.S -->
+            <div class="generation">
+                <h2 class="generation-title">Anak Keluarga Dari Agi Seno Dan Suci Prasetyowati S.S</h2>
+                <div class="family-tree">
+                    <div class="person-card">
+                        <div class="profile-img">H</div>
+                        <div class="person-name">Hammam Satya Perwira</div>
+                        <div class="person-detail">Putra dari Agi & Suci</div>
+                        <div class="person-info">
+                            <div class="info-item">
+                                <span class="info-label">Lahir:</span>
+                                <span class="info-value">02 Juli 2003</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Alamat:</span>
+                                <span class="info-value">JL. CITRA SERUNI 36 RT 100 RW 010, TROPODO, WARU, SIDOARJO JAWA
+                                    TIMUR</span>
+                                <a href="https://maps.google.com/?q=JL. CITRA SERUNI 36 RT 100 RW 010, TROPODO, WARU, SIDOARJO JAWA TIMUR" target="_blank" class="map-link">
+                                    <i class="fas fa-map-marker-alt"></i> Lihat di Maps
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="person-card">
+                        <div class="profile-img">A</div>
+                        <div class="person-name">Atha Candra Ahmad Fawwaz</div>
+                        <div class="person-detail">Putra dari Agi & Suci</div>
+                        <div class="person-info">
+                            <div class="info-item">
+                                <span class="info-label">Lahir:</span>
+                                <span class="info-value">14 Maret 2008</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Alamat:</span>
+                                <span class="info-value">JL. CITRA SERUNI 36 RT 100 RW 010, TROPODO, WARU, SIDOARJO JAWA
+                                    TIMUR</span>
+                                <a href="https://maps.google.com/?q=JL. CITRA SERUNI 36 RT 100 RW 010, TROPODO, WARU, SIDOARJO JAWA TIMUR" target="_blank" class="map-link">
+                                    <i class="fas fa-map-marker-alt"></i> Lihat di Maps
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="person-card">
+                        <div class="profile-img">A</div>
+                        <div class="person-name">Almira Nadia Kirana</div>
+                        <div class="person-detail">Putri dari Agi & Suci</div>
+                        <div class="person-info">
+                            <div class="info-item">
+                                <span class="info-label">Lahir:</span>
+                                <span class="info-value">21 Januari 2014</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Alamat:</span>
+                                <span class="info-value">JL. CITRA SERUNI 36 RT 100 RW 010, TROPODO, WARU, SIDOARJO JAWA
+                                    TIMUR</span>
+                                <a href="https://maps.google.com/?q=JL. CITRA SERUNI 36 RT 100 RW 010, TROPODO, WARU, SIDOARJO JAWA TIMUR" target="_blank" class="map-link">
+                                    <i class="fas fa-map-marker-alt"></i> Lihat di Maps
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- - Keluarga Dari Dwi Indah Pangestuti Dan Casmari -->
+            <div class="generation">
+                <h2 class="generation-title">Keluarga Dari Dwi Indah Pangestuti Dan Casmari</h2>
+                <div class="family-tree">
+                    <div class="person-card">
+                        <div class="profile-img">D</div>
+                        <div class="person-name">Dwi Indah Pangestuti S.E</div>
+                        <div class="person-detail">Istri dari Casmari</div>
+                        <div class="person-info">
+                            <div class="info-item">
+                                <span class="info-label">Lahir:</span>
+                                <span class="info-value">21 Agustus 1977</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Alamat:</span>
+                                <span class="info-value">PERUMTAS III BLOK N-6 NO 29 DUSUN KEPUHKEMIRI RT 026, RW 007, TULANGAN
+                                    SIDOARJO</span>
+                                <a href="https://maps.google.com/?q=PERUMTAS III BLOK N-6 NO 29 DUSUN KEPUHKEMIRI RT 026, RW 007, TULANGAN SIDOARJO" target="_blank" class="map-link">
+                                    <i class="fas fa-map-marker-alt"></i> Lihat di Maps
+                                </a>
+                            </div>
+                        </div>
+                        <div class="children-container">
+                            <div class="children-title">Memiliki 3 Anak:</div>
+                            <div class="children-grid">
+                                <div class="child-item">Erika Putri Aprilia</div>
+                                <div class="child-item">Azhar Zaidaan Athaya</div>
+                                <div class="child-item">Ammar Ikbar Nafidz</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="person-card">
+                        <div class="profile-img">C</div>
+                        <div class="person-name">Casmari</div>
+                        <div class="person-detail">Suami dari Dwi Indah Pangestuti</div>
+                        <div class="person-info">
+                            <div class="info-item">
+                                <span class="info-label">Lahir:</span>
+                                <span class="info-value">13 April 1975</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Alamat:</span>
+                                <span class="info-value">PERUMTAS III BLOK N-6 NO 29 DUSUN KEPUHKEMIRI RT 026, RW 007, TULANGAN
+                                    SIDOARJO</span>
+                                <a href="https://maps.google.com/?q=PERUMTAS III BLOK N-6 NO 29 DUSUN KEPUHKEMIRI RT 026, RW 007, TULANGAN SIDOARJO" target="_blank" class="map-link">
+                                    <i class="fas fa-map-marker-alt"></i> Lihat di Maps
+                                </a>
+                            </div>
+                        </div>
+                        <div class="children-container">
+                            <div class="children-title">Ayah dari 3 Anak:</div>
+                            <div class="children-grid">
+                                <div class="child-item">Erika Putri Aprilia</div>
+                                <div class="child-item">Azhar Zaidaan Athaya</div>
+                                <div class="child-item">Ammar Ikbar Nafidz</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Anak Keluarga Dari Dwi Indah Pangestuti Dan Casmari -->
+            <div class="generation">
+                <h2 class="generation-title">Anak Keluarga Dari Dwi Indah Pangestuti Dan Casmari </h2>
+                <div class="family-tree">
+                    <div class="person-card">
+                        <div class="profile-img">E</div>
+                        <div class="person-name">Erika Putri Aprilia</div>
+                        <div class="person-detail">Putri dari Dwi & Casmari</div>
+                        <div class="person-info">
+                            <div class="info-item">
+                                <span class="info-label">Lahir:</span>
+                                <span class="info-value">15 April 2003</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Alamat:</span>
+                                <span class="info-value">PERUMTAS III BLOK N-6 NO 29 DUSUN KEPUHKEMIRI RT 026, RW 007, TULANGAN
+                                    SIDOARJO</span>
+                                <a href="https://maps.google.com/?q=PERUMTAS III BLOK N-6 NO 29 DUSUN KEPUHKEMIRI RT 026, RW 007, TULANGAN SIDOARJO" target="_blank" class="map-link">
+                                    <i class="fas fa-map-marker-alt"></i> Lihat di Maps
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="person-card">
+                        <div class="profile-img">A</div>
+                        <div class="person-name">Azhar Zaidaan Athaya</div>
+                        <div class="person-detail">Putra dari Dwi & Casmari</div>
+                        <div class="person-info">
+                            <div class="info-item">
+                                <span class="info-label">Lahir:</span>
+                                <span class="info-value">17 Juni 2010</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Alamat:</span>
+                                <span class="info-value">PERUMTAS III BLOK N-6 NO 29 DUSUN KEPUHKEMIRI RT 026, RW 007, TULANGAN
+                                    SIDOARJO</span>
+                                <a href="https://maps.google.com/?q=PERUMTAS III BLOK N-6 NO 29 DUSUN KEPUHKEMIRI RT 026, RW 007, TULANGAN SIDOARJO" target="_blank" class="map-link">
+                                    <i class="fas fa-map-marker-alt"></i> Lihat di Maps
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="person-card">
+                        <div class="profile-img">A</div>
+                        <div class="person-name">Ammar Ikbar Nafidz</div>
+                        <div class="person-detail">Putra dari Dwi & Casmari</div>
+                        <div class="person-info">
+                            <div class="info-item">
+                                <span class="info-label">Lahir:</span>
+                                <span class="info-value">16 Mei 2012</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Alamat:</span>
+                                <span class="info-value">PERUMTAS III BLOK N-6 NO 29 DUSUN KEPUHKEMIRI RT 026, RW 007, TULANGAN
+                                    SIDOARJO</span>
+                                <a href="https://maps.google.com/?q=PERUMTAS III BLOK N-6 NO 29 DUSUN KEPUHKEMIRI RT 026, RW 007, TULANGAN SIDOARJO" target="_blank" class="map-link">
+                                    <i class="fas fa-map-marker-alt"></i> Lihat di Maps
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Keluarga Dari Trio Siswantoro Dan Alugara Prahara Sari -->
+            <div class="generation">
+                <h2 class="generation-title">Keluarga Dari Trio Siswantoro Dan Alugara Prahara Sari </h2>
+                <div class="family-tree">
+                    <div class="person-card">
+                        <div class="profile-img">T</div>
+                        <div class="person-name">Trio Siswantoro</div>
+                        <div class="person-detail">Suami dari Alugara Prahara Sari</div>
+                        <div class="person-info">
+                            <div class="info-item">
+                                <span class="info-label">Lahir:</span>
+                                <span class="info-value">23 April 1981</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Alamat:</span>
+                                <span class="info-value">JL. MANUKAN MULYO I BLOK 9G NO 3 TANDES SURABAYA</span>
+                                <a href="https://maps.google.com/?q=JL. MANUKAN MULYO I BLOK 9G NO 3 TANDES SURABAYA" target="_blank" class="map-link">
+                                    <i class="fas fa-map-marker-alt"></i> Lihat di Maps
+                                </a>
+                            </div>
+                        </div>
+                        <div class="children-container">
+                            <div class="children-title">Memiliki 2 Anak:</div>
+                            <div class="children-grid">
+                                <div class="child-item">Callista Ozara Siswantoro</div>
+                                <div class="child-item">Xavier Zhagran Habiby Siswantoro</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="person-card">
+                        <div class="profile-img">A</div>
+                        <div class="person-name">Alugara Prahara Sari</div>
+                        <div class="person-detail">Istri dari Trio Siswantoro</div>
+                        <div class="person-info">
+                            <div class="info-item">
+                                <span class="info-label">Lahir:</span>
+                                <span class="info-value">17 November 1985</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Alamat:</span>
+                                <span class="info-value">JL. MANUKAN MULYO I BLOK 9G NO 3 TANDES SURABAYA</span>
+                                <a href="https://maps.google.com/?q=JL. MANUKAN MULYO I BLOK 9G NO 3 TANDES SURABAYA" target="_blank" class="map-link">
+                                    <i class="fas fa-map-marker-alt"></i> Lihat di Maps
+                                </a>
+                            </div>
+                        </div>
+                        <div class="children-container">
+                            <div class="children-title">Ibu dari 2 Anak:</div>
+                            <div class="children-grid">
+                                <div class="child-item">Callista Ozara Siswantoro</div>
+                                <div class="child-item">Xavier Zhafran Habiby Siswantoro</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- - Anak Keluarga Dari Trio Siswantoro Dan Alugara Prahara Sari -->
+            <div class="generation">
+                <h2 class="generation-title">Anak Keluarga Dari Trio Siswantoro Dan Alugara Prahara Sari</h2>
+                <div class="family-tree">
+                    <div class="person-card">
+                        <div class="profile-img">C</div>
+                        <div class="person-name">Callista Ozara Siswantoro</div>
+                        <div class="person-detail">Putri dari Trio & Alugara</div>
+                        <div class="person-info">
+                            <div class="info-item">
+                                <span class="info-label">Lahir:</span>
+                                <span class="info-value">26 Juni 2012</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Alamat:</span>
+                                <span class="info-value">JL. MANUKAN MULYO I BLOK 9G NO 3 TANDES SURABAYA</span>
+                                <a href="https://maps.google.com/?q=JL. MANUKAN MULYO I BLOK 9G NO 3 TANDES SURABAYA" target="_blank" class="map-link">
+                                    <i class="fas fa-map-marker-alt"></i> Lihat di Maps
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="person-card">
+                        <div class="profile-img">X</div>
+                        <div class="person-name">Xavier Zhagran Habiby Siswantoro</div>
+                        <div class="person-detail">Putra dari Trio & Alugara</div>
+                        <div class="person-info">
+                            <div class="info-item">
+                                <span class="info-label">Lahir:</span>
+                                <span class="info-value">7 Mei 2017</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Alamat:</span>
+                                <span class="info-value">JL. MANUKAN MULYO I BLOK 9G NO 3 TANDES SURABAYA</span>
+                                <a href="https://maps.google.com/?q=JL. MANUKAN MULYO I BLOK 9G NO 3 TANDES SURABAYA" target="_blank" class="map-link">
+                                    <i class="fas fa-map-marker-alt"></i> Lihat di Maps
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB ALBUM FOTO -->
+        <div id="album" class="tab-content">
+            <div class="album-section">
+                <h2 class="album-title">Album Foto Keluarga</h2>
+
+                <div style="
+                    text-align:center;
+                    background:#fff3cd;
+                    padding:20px;
+                    border-radius:10px;
+                    border:1px solid #ffeeba;
+                    color:#856404;
+                    font-size:18px;
+                    margin-top:20px;
+                ">
+                    <strong>Maaf!</strong> Album foto sedang dalam perbaikan.
+                    <br>Waktu saat ini: <strong id="realTimeClockAlbum"></strong>
+                </div>
+            </div>
+        </div>
+
+        <script>
+        // JAM REALTIME UNTUK HALAMAN ALBUM
+        function updateClockAlbum() {
+            const now = new Date();
+
+            const formatted = now.toLocaleString('id-ID', {
+                weekday: 'long',
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+
+            document.getElementById("realTimeClockAlbum").textContent = formatted;
+        }
+
+        setInterval(updateClockAlbum, 1000);
+        updateClockAlbum();
+        </script>
+
+        <!-- TAB KOMENTAR -->
+        <div id="comments" class="tab-content">
+
+            <div class="comments-section">
+                <h2 class="comments-title">Komentar & Pesan</h2>
+
+                <div style="
+                    text-align:center;
+                    background:#fff3cd;
+                    padding:20px;
+                    border-radius:10px;
+                    border:1px solid #ffeeba;
+                    color:#856404;
+                    font-size:18px;
+                    margin-top:20px;
+                ">
+                    <strong>Maaf!</strong> Komentar sedang dalam perbaikan.
+                    <br>Waktu saat ini: <strong id="realTimeClock"></strong>
+                </div>
+
+            </div>
+
+        </div> <!-- END TAB KOMENTAR -->
+        </div> <!-- END .container -->
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <p>© 2025 Silsilah Keluarga Soebenti dan Wariso | Keluarga yang Berkah dan Bahagia</p>
+            <p>Dibuat dengan ❤️ untuk menghormati dan memperingati sejarah keluarga kami</p>
+        </div>
+
+        <!-- JAVASCRIPT FINAL -->
+        <script>
+            // Fungsi berpindah tab
+            function showTab(tabName, event) {
+                const tabContents = document.querySelectorAll('.tab-content');
+                tabContents.forEach(content => content.classList.remove('active'));
+
+                const tabButtons = document.querySelectorAll('.tab-btn');
+                tabButtons.forEach(button => button.classList.remove('active'));
+
+                document.getElementById(tabName).classList.add('active');
+                event.currentTarget.classList.add('active');
+            }
+        </script>
+
+        <!-- REAL-TIME CLOCK -->
+        <script>
+        function updateClock() {
+            const now = new Date();
+
+            const formatted = now.toLocaleString('id-ID', {
+                weekday: 'long',
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+
+            document.getElementById("realTimeClock").textContent = formatted;
+        }
+
+        // Update setiap detik
+        setInterval(updateClock, 1000);
+        updateClock(); // tampilkan saat halaman dibuka
+        </script>
